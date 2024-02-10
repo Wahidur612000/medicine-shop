@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Header from './components/Header';
+import AddProduct from './components/AddProduct';
+import MedicineList from './components/MedicineList';
 
 function App() {
+  const [medicines, setMedicines] = useState([]);
+
+  
+  useEffect(() => {
+    const storedMedicines = JSON.parse(localStorage.getItem('products')) || [];
+    setMedicines(storedMedicines);
+  }, []); 
+
+  const handleAddProduct = (newProduct) => {
+    
+    setMedicines([...medicines, newProduct]);
+   
+    localStorage.setItem('products', JSON.stringify([...medicines, newProduct]));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <AddProduct onAdd={handleAddProduct} />
+      <MedicineList medicines={medicines} />
     </div>
   );
 }
