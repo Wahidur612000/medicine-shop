@@ -1,0 +1,35 @@
+/* AddProduct.module.css */
+
+.addProduct {
+    margin: 20px auto;
+    width: 50%;
+  }
+  
+  .addProduct div {
+    margin-bottom: 10px;
+  }
+  
+  .addProduct label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .addProduct input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .addProduct button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .addProduct button:hover {
+    background-color: #45a049;
+  }
+  

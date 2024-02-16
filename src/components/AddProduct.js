@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './AddProduct.module.css'; // Importing styles
 
 const AddProduct = ({ onAdd }) => {
   const [medicineName, setMedicineName] = useState('');
@@ -32,7 +33,7 @@ const AddProduct = ({ onAdd }) => {
   };
 
   return (
-    <div>
+    <div className={styles.addProduct}> {/* Applying styles */}
       <div>
         <label>Medicine Name:</label>
         <input type="text" value={medicineName} onChange={(e) => setMedicineName(e.target.value)} />

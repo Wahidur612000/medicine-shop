@@ -1,0 +1,145 @@
+/* App.module.css */
+
+/* Header Component */
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+/* AddProduct Component */
+.addProductForm {
+  margin: 20px auto;
+  width: 50%;
+}
+
+.addProductForm input[type="text"],
+.addProductForm select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.addProductForm button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.addProductForm button:hover {
+  background-color: #45a049;
+}
+
+/* MedicineList Component */
+.medicineList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+  margin: 20px auto;
+}
+
+.medicineCard {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.medicineCard h3 {
+  margin-top: 0;
+}
+
+.medicineCard button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.medicineCard button:hover {
+  background-color: #45a049;
+}
+
+/* Cart Component */
+.cart {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 2px solid #333;
+}
+
+.cart h2 {
+  margin-top: 0;
+}
+
+.cartItem {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.cartItem:last-child {
+  border-bottom: none;
+}
+
+.cartItemInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cartItemInfo span {
+  font-weight: bold;
+}
+
+.cartItemButtons button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.cartItemButtons button:hover {
+  background-color: #45a049;
+}
+
+.cartItemQuantity {
+  display: flex;
+  align-items: center;
+}
+
+.cartItemQuantity button {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.cartItemQuantity button:hover {
+  background-color: #e9e9e9;
+}
+
+.cartItemQuantity span {
+  margin: 0 10px;
+}
+
+.cartOrderButton {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.cartOrderButton:hover {
+  background-color: #45a049;
+}

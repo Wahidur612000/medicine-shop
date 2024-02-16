@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './MedicineList.module.css'; // Importing styles
 
 const MedicineList = ({ medicines, addToCart }) => {
   const [quantity, setQuantity] = useState(1);
@@ -13,7 +14,7 @@ const MedicineList = ({ medicines, addToCart }) => {
   }
 
   return (
-    <div>
+    <div className={styles.medicineList}> {/* Applying styles */}
       <h2>Medicine List</h2>
       <table>
         <thead>
@@ -33,8 +34,8 @@ const MedicineList = ({ medicines, addToCart }) => {
               <td>{medicine.price}</td>
               <td>{medicine.availableQuantity}</td>
               <td>
-                <input type="number" value={quantity} onChange={handleQuantityChange} />
-                <button onClick={() => addToCart(medicine, quantity)}>Add to Cart</button>
+                <input type="number" value={quantity} onChange={handleQuantityChange} className={styles.quantityInput} /> {/* Applying styles */}
+                <button onClick={() => addToCart(medicine, quantity)} className={styles.addToCartButton}>Add to Cart</button> {/* Applying styles */}
               </td>
             </tr>
           ))}

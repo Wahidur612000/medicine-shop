@@ -1,5 +1,5 @@
-// Cart.js
 import React from 'react';
+import styles from './Cart.module.css'; // Importing styles
 
 const Cart = ({ cartItems, onIncrement, onDecrement, onOrder, onClose }) => {
   const calculateTotal = () => {
@@ -11,7 +11,7 @@ const Cart = ({ cartItems, onIncrement, onDecrement, onOrder, onClose }) => {
   };
 
   return (
-    <div>
+    <div className={styles.cart}>
       <h2>Cart</h2>
       <table>
         <thead>
@@ -29,19 +29,22 @@ const Cart = ({ cartItems, onIncrement, onDecrement, onOrder, onClose }) => {
               <td>{item.medicineName}</td>
               <td>{item.desc}</td>
               <td>{item.price}</td>
-              <td>
-                <button onClick={() => onDecrement(item)}>-</button>
-                {item.quantity}
-                <button onClick={() => onIncrement(item)}>+</button>
+              <td className={styles.actions}>
+                <button onClick={() => onDecrement(item)} className={styles.cartButton}>-</button>
+                <span className={styles.amount}>{item.quantity}</span>
+                <button onClick={() => onIncrement(item)} className={styles.cartButton}>+</button>
               </td>
               <td>{item.price * item.quantity}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div>Total: {calculateTotal()}</div>
-      <button onClick={onOrder}>Order</button>
-      <button onClick={onClose}>Close</button>
+      <div className={styles.summary}>
+        <span>Total:</span>
+        <span className={styles.price}>{calculateTotal()}</span>
+      </div>
+      <button onClick={onOrder} className={styles.cartButton}>Order</button>
+      <button onClick={onClose} className={styles.cartButton}>Close</button>
     </div>
   );
 };
