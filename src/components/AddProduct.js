@@ -13,10 +13,17 @@ const AddProduct = ({ onAdd }) => {
       price: price,
       availableQuantity: availableQuantity,
     };
-    onAdd(newProduct);
-    // Save to local storage
+
+    // Check if the new product already exists in the list
     const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
-    localStorage.setItem('products', JSON.stringify([...existingProducts, newProduct]));
+    const isDuplicate = existingProducts.some(product => product.medicineName === newProduct.medicineName);
+    if (!isDuplicate) {
+      // Call the onAdd function to add the new product
+      onAdd(newProduct);
+      // Update local storage
+      localStorage.setItem('products', JSON.stringify([...existingProducts, newProduct]));
+    }
+
     // Clear input fields
     setMedicineName('');
     setDesc('');

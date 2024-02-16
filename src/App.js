@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
@@ -17,24 +16,12 @@ function App() {
   }, []); 
 
   const handleAddProduct = (newProduct) => {
-    // Check if the new product already exists in the list
-    const existingProductIndex = medicines.findIndex(product => product.medicineName === newProduct.medicineName);
-    if (existingProductIndex !== -1) {
-      // If exists, update the quantity instead of adding a new entry
-      const updatedMedicines = medicines.map((product, index) => {
-        if (index === existingProductIndex) {
-          return { ...product, availableQuantity: product.availableQuantity + newProduct.availableQuantity };
-        }
-        return product;
-      });
-      setMedicines(updatedMedicines);
-      localStorage.setItem('products', JSON.stringify(updatedMedicines));
-    } else {
-      // If not exists, add the new product to the list
-      const updatedMedicines = [...medicines, newProduct];
-      setMedicines(updatedMedicines);
-      localStorage.setItem('products', JSON.stringify(updatedMedicines));
-    }
+    // Update the medicines state with the new product
+    setMedicines(prevMedicines => [...prevMedicines, newProduct]);
+    
+    // Save to local storage
+    const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
+    localStorage.setItem('products', JSON.stringify([...existingProducts, newProduct]));
   };
 
   const addToCart = (medicine, quantity) => {
@@ -104,7 +91,9 @@ function App() {
   
 
   const handleOrder = () => {
-    // Handle order logic here
+    alert('Order Placed!');
+    setCartItems([]);
+    localStorage.setItem('cartItems', JSON.stringify([]));
   };
 
   return (
