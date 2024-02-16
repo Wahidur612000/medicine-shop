@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Cart.module.css'; // Importing styles
+import Card from './Card';
 
 const Cart = ({ cartItems, onIncrement, onDecrement, onOrder, onClose }) => {
   const calculateTotal = () => {
@@ -11,6 +12,7 @@ const Cart = ({ cartItems, onIncrement, onDecrement, onOrder, onClose }) => {
   };
 
   return (
+    <Card>
     <div className={styles.cart}>
       <h2>Cart</h2>
       <table>
@@ -46,6 +48,7 @@ const Cart = ({ cartItems, onIncrement, onDecrement, onOrder, onClose }) => {
       <button onClick={onOrder} className={styles.cartButton}>Order</button>
       <button onClick={onClose} className={styles.cartButton}>Close</button>
     </div>
+  </Card>
   );
 };
 

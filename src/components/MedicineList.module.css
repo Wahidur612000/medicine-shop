@@ -1,48 +1,60 @@
 /* MedicineList.module.css */
 
 .medicineList {
-    margin-top: 20px;
-  }
-  
-  .medicineList table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .medicineList th,
-  .medicineList td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .medicineList th {
-    background-color: #f2f2f2;
-  }
-  
-  .medicineList tr:hover {
-    background-color: #f2f2f2;
-  }
-  
-  .quantityInput {
-    width: 50px;
-    margin-right: 10px;
-  }
-  
-  .addToCartButton {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .addToCartButton:hover {
-    background-color: #45a049;
-  }
-  
+  margin-top: 20px;
+}
+
+.medicineList table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.medicineList th,
+.medicineList td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.medicineList th {
+  background-color: #f2f2f2;
+}
+
+.medicineList tr:hover {
+  background-color: #f2f2f2;
+}
+
+.quantityInput {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.addToCartButton {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.addToCartButton:hover {
+  background-color: #45a049;
+}
+
+.disabledButton {
+  background-color: #ccc;
+  color: #666;
+  border: none;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: not-allowed;
+}

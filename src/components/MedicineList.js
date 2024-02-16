@@ -14,7 +14,7 @@ const MedicineList = ({ medicines, addToCart }) => {
   }
 
   return (
-    <div className={styles.medicineList}> {/* Applying styles */}
+    <div className={styles.medicineList}>
       <h2>Medicine List</h2>
       <table>
         <thead>
@@ -34,8 +34,14 @@ const MedicineList = ({ medicines, addToCart }) => {
               <td>{medicine.price}</td>
               <td>{medicine.availableQuantity}</td>
               <td>
-                <input type="number" value={quantity} onChange={handleQuantityChange} className={styles.quantityInput} /> {/* Applying styles */}
-                <button onClick={() => addToCart(medicine, quantity)} className={styles.addToCartButton}>Add to Cart</button> {/* Applying styles */}
+                {medicine.availableQuantity > 0 ? (
+                  <>
+                    <input type="number" value={quantity} onChange={handleQuantityChange} className={styles.quantityInput} />
+                    <button onClick={() => addToCart(medicine, quantity)} className={styles.addToCartButton}>Add to Cart</button>
+                  </>
+                ) : (
+                  <button className={styles.disabledButton}>Out of Stock</button>
+                )}
               </td>
             </tr>
           ))}
