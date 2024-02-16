@@ -1,17 +1,16 @@
-// MedicineList.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const MedicineList = ({ medicines, addToCart }) => {
   const [quantity, setQuantity] = useState(1);
 
-  useEffect(() => {
-    // Reset quantity when medicines change
-    setQuantity(1);
-  }, [medicines]);
-
   const handleQuantityChange = (e) => {
     setQuantity(parseInt(e.target.value));
   };
+
+  // Check if medicines is an array before attempting to map over it
+  if (!Array.isArray(medicines)) {
+    return <div>No medicines available</div>;
+  }
 
   return (
     <div>
