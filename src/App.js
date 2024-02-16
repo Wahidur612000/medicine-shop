@@ -27,26 +27,29 @@ function App() {
     const existingCartItem = cartItems.find(item => item.medicineName === medicine.medicineName);
 
     if (existingCartItem) {
-      const updatedCartItems = cartItems.map(item =>
-        item.medicineName === existingCartItem.medicineName
-          ? { ...item, quantity: item.quantity + quantity }
-          : item
-      );
-      setCartItems(updatedCartItems);
-      localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+        const updatedCartItems = cartItems.map(item =>
+            item.medicineName === existingCartItem.medicineName
+                ? { ...item, quantity: item.quantity + quantity }
+                : item
+        );
+        setCartItems(updatedCartItems);
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
     } else {
-      const newCartItem = { ...medicine, quantity };
-      setCartItems(prevCartItems => [...prevCartItems, newCartItem]);
-      localStorage.setItem('cartItems', JSON.stringify([...cartItems, newCartItem]));
+        const newCartItem = { ...medicine, quantity };
+        setCartItems(prevCartItems => [...prevCartItems, newCartItem]);
+        localStorage.setItem('cartItems', JSON.stringify([...cartItems, newCartItem]));
     }
 
-    const updatedMedicines = medicines.map(med =>
-      med.medicineName === medicine.medicineName
-        ? { ...med, availableQuantity: med.availableQuantity - quantity }
-        : med
-    );
+    const updatedMedicines = medicines.map(med => {
+        if (med.medicineName === medicine.medicineName) {
+            const updatedQuantity = med.availableQuantity - quantity;
+            return { ...med, availableQuantity: updatedQuantity >= 0 ? updatedQuantity : 0 };
+        }
+        return med;
+    });
+
     setMedicines(updatedMedicines);
-  };
+};
 
   const handleShowCart = () => {
     setShowCart(true);
@@ -57,18 +60,24 @@ function App() {
   };
 
   const handleIncrement = (item) => {
-    const updatedCartItems = cartItems.map(cartItem =>
-      cartItem.medicineName === item.medicineName ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
-    );
-    const updatedMedicines = medicines.map(med =>
-      med.medicineName === item.medicineName ? { ...med, availableQuantity: med.availableQuantity - 1 } : med
-    );
-
-    setCartItems(updatedCartItems);
-    setMedicines(updatedMedicines);
-
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-    localStorage.setItem('medicines', JSON.stringify(updatedMedicines));
+    // Check if the available quantity is greater than 0
+    if (item.availableQuantity > 0) {
+      // Update cart items and medicines
+      const updatedCartItems = cartItems.map(cartItem =>
+        cartItem.medicineName === item.medicineName ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
+      );
+      const updatedMedicines = medicines.map(med =>
+        med.medicineName === item.medicineName ? { ...med, availableQuantity: med.availableQuantity - 1 } : med
+      );
+  
+      // Set state and update local storage
+      setCartItems(updatedCartItems);
+      setMedicines(updatedMedicines);
+      localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+      localStorage.setItem('medicines', JSON.stringify(updatedMedicines));
+    }else{
+      alert("This item is out of stock.");
+    }
   };
 
   const handleDecrement = (item) => {

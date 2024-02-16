@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './AddProduct.module.css'; // Importing styles
+import styles from './AddProduct.module.css'; 
 
 const AddProduct = ({ onAdd }) => {
   const [medicineName, setMedicineName] = useState('');

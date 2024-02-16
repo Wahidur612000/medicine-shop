@@ -1,3 +1,5 @@
+// MedicineList.js
+
 import React, { useState } from 'react';
 import styles from './MedicineList.module.css'; // Importing styles
 
@@ -9,7 +11,7 @@ const MedicineList = ({ medicines, addToCart }) => {
   };
 
   // Check if medicines is an array before attempting to map over it
-  if (!Array.isArray(medicines)) {
+  if (!Array.isArray(medicines) || medicines.length === 0) {
     return <div>No medicines available</div>;
   }
 
@@ -40,7 +42,7 @@ const MedicineList = ({ medicines, addToCart }) => {
                     <button onClick={() => addToCart(medicine, quantity)} className={styles.addToCartButton}>Add to Cart</button>
                   </>
                 ) : (
-                  <button className={styles.disabledButton}>Out of Stock</button>
+                  <button className={styles.disabledButton} disabled>Out of Stock</button>
                 )}
               </td>
             </tr>
