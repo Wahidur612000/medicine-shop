@@ -89,7 +89,7 @@ function App() {
     localStorage.setItem('medicines', JSON.stringify(updatedMedicines));
   };
   
-
+          
   const handleOrder = () => {
     alert('Order Placed!');
     setCartItems([]);
